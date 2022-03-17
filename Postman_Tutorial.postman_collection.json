@@ -16,7 +16,7 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);\r",
-									"pm.globals.set(\"fifth_id\", jsonData.data[5].id);\r",
+									"pm.globals.set(\"fifth_id\", jsonData.data[4].id);\r",
 									"\r",
 									"pm.test(\"status code is 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
 									"pm.test(\"response time\", () => pm.expect(pm.response.responseTime).to.below(2000));\r",
@@ -74,9 +74,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}users{{fifth_id}}",
+							"raw": "{{url}}users/{{fifth_id}}",
 							"host": [
-								"{{url}}users{{fifth_id}}"
+								"{{url}}users"
+							],
+							"path": [
+								"{{fifth_id}}"
 							]
 						}
 					},
