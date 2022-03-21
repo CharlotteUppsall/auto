@@ -21,7 +21,7 @@
 									"pm.test(\"status code is 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
 									"pm.test(\"response time\", () => pm.expect(pm.response.responseTime).to.below(2000));\r",
 									"pm.test(\"6 users found\", () => pm.expect(jsonData.data.length).to.equal(6));\r",
-									"pm.test(\"First user not null\", () => pm.expect(jsonData.data[0].id).to.not.equal(null));\r",
+									"pm.test(\"Verify Avatar user not null\", () => pm.expect(jsonData.data[1].avatar).to.not.equal(null));\r",
 									"pm.test(\"Verify third user's last name\", () => pm.expect(jsonData.data[2].last_name).to.equal(\"Wong\"));\r",
 									"pm.test(\"Name somewhere in response\", () => pm.expect(pm.response.text()).to.include(\"Eve\"));\r",
 									""
@@ -64,7 +64,8 @@
 									"var jsonData = JSON.parse(responseBody);\r",
 									"\r",
 									"pm.test(\"status code is 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
-									"pm.test(\"response time\", () => pm.expect(pm.response.responseTime).to.below(2000));"
+									"pm.test(\"response time\", () => pm.expect(pm.response.responseTime).to.below(2000));\r",
+									"pm.test(\"user Id 5\", () => pm.expect(jsonData.data.id).to.equal(pm.globals.get(\"fifth_id\")));"
 								],
 								"type": "text/javascript"
 							}
@@ -97,11 +98,10 @@
 									"\r",
 									"pm.test(\"Status code is 201\", () => pm.expect(responseCode.code).to.equal(201));\r",
 									"pm.test(\"Response time below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
-									"pm.test(\"User's name\", () => pm.expect(jsonData.name).to.equal(\"Charlotte Uppsäll\"));\r",
-									"pm.test(\"User's job\", () => pm.expect(jsonData.job).to.equal(\"Kravanalytiker\"));\r",
 									"pm.test(\"id not null\", () => pm.expect(jsonData.id).to.not.equal(null));\r",
 									"pm.test(\"createdAt not null\", () => pm.expect(jsonData.createdAt).to.not.equal(null));\r",
-									""
+									"pm.test(\"User's name\", () => pm.expect(jsonData.name).to.equal(\"Charlotte Uppsäll\"));\r",
+									"pm.test(\"User's job\", () => pm.expect(jsonData.job).to.equal(\"Kravanalytiker\"));"
 								],
 								"type": "text/javascript"
 							}
@@ -139,7 +139,6 @@
 									"\r",
 									"pm.test(\"Status code is 200\", () => pm.expect(responseCode.code).to.equal(200));\r",
 									"pm.test(\"Response time below 2 sec\", () => pm.expect(pm.response.responseTime).to.be.below(2000));\r",
-									"pm.test(\"User name\", () => pm.expect(jsonData.name).to.equal(\"Charlotte Uppsäll\"));\r",
 									"pm.test(\"User job\", () => pm.expect(jsonData.job).to.equal(\"Postman Master\"));\r",
 									"pm.test(\"updatedAt not null\", () => pm.expect(jsonData.updatedAt).to.not.equal(null));"
 								],
